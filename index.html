@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pawfect Match</title>
+<!-- Favicons: the SVG switches between the black dog (light mode) and green dog (dark mode) by itself;
+     the PNGs are backups for browsers that can't use SVG icons, and for phone home screens -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body id="home">
+
+<header class="nav">
+  <a class="logo" href="#home">Pawfect Match</a>
+  <nav class="links" aria-label="Page sections">
+    <a href="#home">Home</a>
+    <a href="#quiz">Take the quiz</a>
+    <a href="#breeds">All dog breeds</a>
+  </nav>
+  <div class="searchBox navSearch">
+    <input type="search" id="navInput" placeholder="Search" aria-label="Search breeds" autocomplete="off">
+    <div class="suggestions" id="navSuggest" hidden></div>
+  </div>
+</header>
+
+<section class="intro" aria-labelledby="introTitle">
+  <h1 id="introTitle">Find the dog<br>that fits<br>your life.</h1>
+  <div class="introSide">
+    <img class="heroPhoto" src="woman-with-dog-photo.png" width="500" height="269" alt="A woman hugging her brown and white dog">
+    <p class="lede">Pawfect Match helps you find a dog that fits the way you actually live. Browse every breed in one place, search by name, and filter by breed type or temperament to compare sizes, lifespans and personalities. If you&rsquo;re not sure where to start, take the short quiz and we&rsquo;ll suggest three breeds that suit your energy, your space and your household.</p>
+  </div>
+</section>
+
+<main>
+  <section class="quiz" id="quiz">
+    <div class="quizIntro" id="quizIntro">
+      <h2>What&rsquo;s your<br>dog <em>personality?</em></h2>
+      <button type="button" class="lime" id="quizStart">Take the quiz</button>
+    </div>
+
+    <div class="quizCard" id="quizCard" hidden>
+      <p class="qCount" id="qCount"></p>
+      <div class="qViewport"><div class="qTrack" id="qTrack"></div></div>
+      <div class="qNav">
+        <button type="button" class="linkBtn" id="qBack">&lsaquo; Back</button>
+      </div>
+    </div>
+
+    <div class="quizDone" id="quizDone" hidden>
+      <h3>Your top three matches</h3>
+      <div class="grid three" id="quizResults"></div>
+      <button type="button" class="pill" id="quizAgain">Do quiz again</button>
+    </div>
+  </section>
+
+  <section class="find" id="breeds">
+    <h2>Find a dog</h2>
+    <p class="sub left">Browse through the list of dogs. Click the heart to save a favourite.<br>Use the filters to narrow by breed type or temperament (e.g. alert, intelligent).</p>
+    <div class="filters">
+      <div class="groupBtns" id="groupBtns" role="group" aria-label="Breed type"></div>
+      <div class="tempWrap">
+      <button type="button" class="pill ghost" id="openDrawer" aria-controls="drawer" aria-expanded="false">Temperament</button>
+      <aside class="drawer" id="drawer" aria-label="Filter by temperament" aria-hidden="true">
+        <div class="drawerHead">
+          <h2>Temperament</h2>
+          <button type="button" class="round" id="closeDrawer" aria-label="Close filters">&times;</button>
+        </div>
+        <p class="drawerHint">Top 10 traits. Breeds must have all the traits you pick.</p>
+        <button type="button" class="linkBtn" id="clearTemps">Clear all</button>
+        <div class="chips" id="chips"></div>
+      </aside>
+    </div>
+    </div>
+    <p class="status" id="status" role="status"></p>
+    <div class="masonry" id="grid"></div>
+    <div id="sentinel" aria-hidden="true"></div>
+  </section>
+</main>
+
+
+<!-- Detail pop-up: <dialog> is built into browsers, so it handles focus and the Esc key for us -->
+<dialog id="detail" aria-labelledby="detailTitle">
+  <button type="button" class="round" id="closeDetail" aria-label="Close details">&times;</button>
+  <div id="detailBody"></div>
+</dialog>
+
+<a class="credit" href="https://rapidapi.com/myapos--FqlEzvrlv/api/dog-breeds2" target="_blank" rel="noopener"><img class="creditBall" src="tennis-ball.png" alt="" width="96" height="96"><span class="creditText"><span class="creditLead">Made with</span> <strong>The Dog Breed API</strong></span></a>
+
+<nav class="rail" id="rail" aria-label="Jump to a letter"></nav>
+
+<footer class="foot">
+  <strong>Pawfect Match</strong>
+  <span>Breed data from Dog Breeds API. Not affiliated with Dog Breeds API.</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
